@@ -61,12 +61,12 @@ const init = function() {
         card.classList.add(cardsColor[position]);
         cardsColor.splice(position, 1);
     })
-}
+};
 
 setTimeout(function() {
     cards.forEach(card => {
         card.classList.add("hidden");
         card.addEventListener("click", clickCard)
     })
-}, 2000)
+}, 2000);
 init();

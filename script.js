@@ -6,12 +6,12 @@ cardsColor.forEach(function() {
     elemCards.appendChild(cardsField);
 });
 
-let cards = document.querySelectorAll("div");
+let cards = document.querySelectorAll('div');
 cards = [...cards];
 
 const startTime = new Date().getTime();
 
-let activeCard = "";
+let activeCard = '';
 const activeCards = [];
 
 const gamePairs = cards.length/2;
@@ -24,34 +24,31 @@ const clickCard = function () {
         return;
     }
     
-    activeCard.classList.remove("hidden");
+    activeCard.classList.remove('hidden');
     
     if (activeCards.length === 0) {
         activeCards[0] = activeCard;
-        return;
     } else {
-        cards.forEach(card => card.removeEventListener("click", clickCard));
+        cards.forEach(card => card.removeEventListener('click', clickCard));
         activeCards[1] = activeCard;
         setTimeout(function() {
            if (activeCards[0].className === activeCards[1].className) {
-            activeCards.forEach(card => card.classList.add("off"));
-            gameResult++;
-            cards = cards.filter(card => !card.classList.contains("off"));
-               if(gameResult === gamePairs) {
-                   const endTime = new Date().getTime();
-                   const gameTime = (endTime - startTime)/1000;
-                   alert(`Koniec! Twój czas gry to: ${gameTime} sekund`);
-                   location.reload();
-               }
-        } else {
-            activeCards.forEach(card => card.classList.add("hidden"))
-          } 
-        activeCard = "";
+               activeCards.forEach(card => card.classList.add('off'));
+               gameResult++;
+               cards = cards.filter(card => !card.classList.contains('off'));
+                    if (gameResult === gamePairs) {
+                       const endTime = new Date().getTime();
+                       const gameTime = (endTime - startTime)/1000;
+                       alert(`Koniec! Twój czas gry to: ${gameTime} sekund`);
+                       location.reload();
+                    }
+            } else {
+                activeCards.forEach(card => card.classList.add('hidden'))
+           }
+        activeCard = '';
         activeCards.length = 0;
-        cards.forEach(card => card.addEventListener("click", clickCard))     
-        
+        cards.forEach(card => card.addEventListener('click', clickCard))
         }, 500)
-        
     }
 };
 
@@ -65,8 +62,8 @@ const init = function() {
 
 setTimeout(function() {
     cards.forEach(card => {
-        card.classList.add("hidden");
-        card.addEventListener("click", clickCard)
+        card.classList.add('hidden');
+        card.addEventListener('click', clickCard)
     })
 }, 2000);
 init();

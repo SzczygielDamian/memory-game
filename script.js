@@ -66,4 +66,5 @@ setTimeout(function() {
         card.addEventListener('click', clickCard)
     })
 }, 2000);
+
 init();
